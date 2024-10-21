@@ -2,7 +2,10 @@ package org.prueba.servi_aseo.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,8 +19,9 @@ import java.time.LocalDate;
 @Table(name = "cliente")
 public class Cliente {
     @Id
-    @ColumnDefault("nextval('cliente_id_cliente_seq')")
     @Column(name = "id_cliente", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente_id_cliente_seq")
+    @SequenceGenerator(name = "cliente_id_cliente_seq", sequenceName = "cliente_id_cliente_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "nombre", nullable = false, length = 100)

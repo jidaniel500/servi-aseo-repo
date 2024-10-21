@@ -23,15 +23,17 @@ public class ClientesWs {
         Response<Cliente> respuesta = new Response<>();
         try {
             boolean crear = service.crear(cliente);
-            respuesta.setIscompletada(true);
-            respuesta.setRespuesta(cliente);
             if (!crear) {
                 respuesta.setMensaje("Usuario no ha sido creado, ya existe uno");
             } else {
                 respuesta.setMensaje("Usuario creado con exito");
             }
+            respuesta.setIscompletada(true);
+            respuesta.setRespuesta(cliente);
             return new ResponseEntity<Response<Cliente>>(respuesta, HttpStatus.OK);
         } catch (Exception e) {
+            respuesta.setIscompletada(false);
+            respuesta.setMensaje(e.getMessage());
             return new ResponseEntity<Response<Cliente>>(respuesta, HttpStatus.NOT_FOUND);
         }
 

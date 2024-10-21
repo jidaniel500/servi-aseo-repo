@@ -11,13 +11,26 @@ public class ClienteService {
     @Autowired
     private ClienteRepository repository;
 
-    public boolean crear(Cliente cliente) {
-        boolean existe = repository.findById(cliente.getId()).isPresent();
-        if (!existe)
-            return false;
-        repository.save(cliente);
-        return true;
+    public boolean crear(Cliente cliente) throws Exception {
+        boolean creado = false;
+        if (!existeCliente(cliente)) {
+            try {
+                // repository.save(cliente);
+                repository.crear_cliente(cliente.getNombre(), cliente.getApellido(), cliente.getDireccion(),
+                        cliente.getCorreoElectronico(), cliente.getTelefono(), cliente.getFechaRegistro());
+                creado = true;
+            } catch (Exception e) {
+                throw new Exception(e.getMessage());
+            }
+        }
+        return creado;
     }
 
-    
+    public boolean existeCliente(Cliente cliente) {
+        boolean existe = false;
+        if (cliente.getId() != null)
+            existe = repository.findById(cliente.getId()).isPresent();
+        return existe;
+    }
+
 }
