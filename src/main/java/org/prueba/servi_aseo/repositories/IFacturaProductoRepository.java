@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FacturaProductoRepository extends JpaRepository<FacturaProducto, Integer> {
+public interface IFacturaProductoRepository extends JpaRepository<FacturaProducto, Integer> {
     
+     
 }

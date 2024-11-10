@@ -11,5 +11,6 @@ public class FacturaModel {
      private ProductoModel[] productos;
      private Factura factura;
      private Integer codServicio;
+     
     
 }

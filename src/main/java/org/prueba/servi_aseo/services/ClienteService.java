@@ -1,7 +1,7 @@
 package org.prueba.servi_aseo.services;
 
 import org.prueba.servi_aseo.entities.Cliente;
-import org.prueba.servi_aseo.repositories.ClienteRepository;
+import org.prueba.servi_aseo.repositories.IClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,16 +9,19 @@ import org.springframework.stereotype.Service;
 public class ClienteService {
 
     @Autowired
-    private ClienteRepository repository;
+    private IClienteRepository repository;
 
     public boolean crear(Cliente cliente) throws Exception {
+
         boolean creado = false;
         if (!existeCliente(cliente)) {
             try {
                 // repository.save(cliente);
                 repository.crear_cliente(cliente.getNombre(), cliente.getApellido(), cliente.getDireccion(),
                         cliente.getCorreoElectronico(), cliente.getTelefono(), cliente.getFechaRegistro());
+
                 creado = true;
+
             } catch (Exception e) {
                 throw new Exception(e.getMessage());
             }
@@ -32,5 +35,8 @@ public class ClienteService {
             existe = repository.findById(cliente.getId()).isPresent();
         return existe;
     }
+ 
+      
+    
 
 }

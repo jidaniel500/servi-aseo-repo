@@ -7,14 +7,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/apis")
+@RequestMapping("/apis/compras")
 public class ComprasWs {
 
       
-    @PostMapping("path")
-    public String postMethodName(@RequestBody String entity) {
-        
-        
+    @PostMapping("/crear")
+    public String crearFacturacion(@RequestBody String entity) {
         return entity;
     }
     

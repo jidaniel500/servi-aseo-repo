@@ -1,7 +1,7 @@
 package org.prueba.servi_aseo.services;
 
 import org.prueba.servi_aseo.entities.FacturaServicio;
-import org.prueba.servi_aseo.repositories.FacturaServicioRepository;
+import org.prueba.servi_aseo.repositories.IFacturaServicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class Servicios_FacturacionService {
 
     @Autowired
-    private FacturaServicioRepository repository;
+    private IFacturaServicioRepository repository;
 
     public FacturaServicio crear(FacturaServicio entidad) throws Exception {
         if (entidad.getIdFactura() == null || entidad.getIdServicio() == null)

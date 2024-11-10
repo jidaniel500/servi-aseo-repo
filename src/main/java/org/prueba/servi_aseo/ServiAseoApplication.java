@@ -10,5 +10,4 @@ public class ServiAseoApplication {
 		SpringApplication.run(ServiAseoApplication.class, args);
 	}
 
-
 }

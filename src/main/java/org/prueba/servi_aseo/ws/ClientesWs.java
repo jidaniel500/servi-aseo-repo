@@ -36,7 +36,6 @@ public class ClientesWs {
             respuesta.setMensaje(e.getMessage());
             return new ResponseEntity<Response<Cliente>>(respuesta, HttpStatus.NOT_FOUND);
         }
-
     }
 
 }

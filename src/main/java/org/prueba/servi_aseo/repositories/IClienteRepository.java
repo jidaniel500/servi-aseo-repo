@@ -7,12 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
-import jakarta.transaction.Transactional;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+public interface IClienteRepository extends JpaRepository<Cliente, Integer> {
 
-    @Transactional 
+    
     @Procedure(procedureName = "sp_crear_cliente")
     public void crear_cliente(String nombre, String apellido, String direccion, String email, String telefono,
             LocalDate fechaRegistro);
